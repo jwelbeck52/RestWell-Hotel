@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 
 void main() {
   runApp(MaterialApp(
-    title: 'Named Route Navigation',
+    debugShowCheckedModeBanner: false,
+    title: 'RestWell Hotel',
     theme: ThemeData(
       // This is the theme of your application.
-      primarySwatch: Colors.green,
+      primarySwatch: Colors.purple,
     ),
     // Start the app with the "/" named route. In this case, the app starts
     // on the FirstScreen widget.
@@ -16,6 +17,9 @@ void main() {
       // When navigating to the "/second" route, build the SecondScreen widget.
       '/room_selection': (context) => RoomSelectionScreen(),
       '/personal_details': (context) => PersonalDetailsScreen(),
+      '/payment': (context) => PaymentScreen(),
+      '/confirm_details': (context) => DetailsConfirmationScreen(),
+      '/status': (context) => StatusScreen(),
     },
   ));
 }
@@ -25,7 +29,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home Screen'),
+        title: Text('Reserve Your Room'),
       ),
       body: Center(
         child: ElevatedButton(
@@ -49,6 +53,7 @@ class RoomSelectionScreen extends StatelessWidget {
         ),
         body: Center(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               ElevatedButton(
                 child: Text('Go to Personal Details'),
@@ -74,18 +79,111 @@ class PersonalDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Personal Details"),
-      ),
-      body: Center(
-        child: ElevatedButton(
-          // color: Colors.blueGrey,
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: Text('Go back to Room Selection!'),
+        appBar: AppBar(
+          title: Text("Personal Details"),
         ),
-      ),
-    );
+        body: Center(
+          child: Column(
+            children: [
+              ElevatedButton(
+                child: Text('Go to Payments'),
+                // color: Colors.orangeAccent,
+                onPressed: () {
+                  Navigator.pushNamed(context, '/payment');
+                },
+              ),
+              ElevatedButton(
+                // color: Colors.blueGrey,
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text('Go back to Room Selection!'),
+              ),
+            ],
+          ),
+        ));
+  }
+}
+
+class PaymentScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text("Make Payment"),
+        ),
+        body: Center(
+          child: Column(
+            children: [
+              ElevatedButton(
+                child: Text('Go to Confirm Reservation Details'),
+                // color: Colors.orangeAccent,
+                onPressed: () {
+                  Navigator.pushNamed(context, '/confirm_details');
+                },
+              ),
+              ElevatedButton(
+                // color: Colors.blueGrey,
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text('Go back to Personal Details Screen!'),
+              ),
+            ],
+          ),
+        ));
+  }
+}
+
+class DetailsConfirmationScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text("Confirm Reservation Details"),
+        ),
+        body: Center(
+          child: Column(
+            children: [
+              ElevatedButton(
+                child: Text('Reserve My Rooms'),
+                // color: Colors.orangeAccent,
+                onPressed: () {
+                  Navigator.pushNamed(context, '/status');
+                },
+              ),
+              ElevatedButton(
+                // color: Colors.blueGrey,
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text('Go back to Payment Screen!'),
+              ),
+            ],
+          ),
+        ));
+  }
+}
+
+class StatusScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text("Reservation Status"),
+        ),
+        body: Center(
+          child: Column(
+            children: [
+              ElevatedButton(
+                // color: Colors.blueGrey,
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text('Go back to Confirm Details!'),
+              ),
+            ],
+          ),
+        ));
   }
 }
