@@ -29,7 +29,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Reserve Your Room'),
+        title: Text('RestWell Hotel'),
       ),
       body: Center(
         child: ElevatedButton(
@@ -53,8 +53,13 @@ class RoomSelectionScreen extends StatelessWidget {
         ),
         body: Center(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              Text(
+                'This is the Room Selection Screen',
+                style: TextStyle(fontSize: 23),
+              ),
               ElevatedButton(
                 child: Text('Go to Personal Details'),
                 // color: Colors.orangeAccent,
@@ -84,7 +89,13 @@ class PersonalDetailsScreen extends StatelessWidget {
         ),
         body: Center(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              Text(
+                'This is the Personal Details Screen',
+                style: TextStyle(fontSize: 23),
+              ),
               ElevatedButton(
                 child: Text('Go to Payments'),
                 // color: Colors.orangeAccent,
@@ -114,7 +125,13 @@ class PaymentScreen extends StatelessWidget {
         ),
         body: Center(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              Text(
+                'This is the Payments Screen',
+                style: TextStyle(fontSize: 23),
+              ),
               ElevatedButton(
                 child: Text('Go to Confirm Reservation Details'),
                 // color: Colors.orangeAccent,
@@ -144,7 +161,13 @@ class DetailsConfirmationScreen extends StatelessWidget {
         ),
         body: Center(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              Text(
+                'This is the Reservation Confirmation Screen',
+                style: TextStyle(fontSize: 23),
+              ),
               ElevatedButton(
                 child: Text('Reserve My Rooms'),
                 // color: Colors.orangeAccent,
@@ -174,7 +197,13 @@ class StatusScreen extends StatelessWidget {
         ),
         body: Center(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              Text(
+                'This is Reservation Status Screen',
+                style: TextStyle(fontSize: 23),
+              ),
               ElevatedButton(
                 // color: Colors.blueGrey,
                 onPressed: () {
