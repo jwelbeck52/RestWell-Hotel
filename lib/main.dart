@@ -14,7 +14,8 @@ void main() {
       // When navigating to the "/" route, build the FirstScreen widget.
       '/': (context) => HomeScreen(),
       // When navigating to the "/second" route, build the SecondScreen widget.
-      '/second': (context) => SecondScreen(),
+      '/room_selection': (context) => RoomSelectionScreen(),
+      '/personal_details': (context) => PersonalDetailsScreen(),
     },
   ));
 }
@@ -28,10 +29,10 @@ class HomeScreen extends StatelessWidget {
       ),
       body: Center(
         child: ElevatedButton(
-          child: Text('Click Here'),
+          child: Text('Select Rooms'),
           // color: Colors.orangeAccent,
           onPressed: () {
-            Navigator.pushNamed(context, '/second');
+            Navigator.pushNamed(context, '/room_selection');
           },
         ),
       ),
@@ -39,12 +40,42 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-class SecondScreen extends StatelessWidget {
+class RoomSelectionScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text("Room Selection"),
+        ),
+        body: Center(
+          child: Column(
+            children: [
+              ElevatedButton(
+                child: Text('Go to Personal Details'),
+                // color: Colors.orangeAccent,
+                onPressed: () {
+                  Navigator.pushNamed(context, '/personal_details');
+                },
+              ),
+              ElevatedButton(
+                // color: Colors.blueGrey,
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text('Go back home!'),
+              ),
+            ],
+          ),
+        ));
+  }
+}
+
+class PersonalDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Second Screen"),
+        title: Text("Personal Details"),
       ),
       body: Center(
         child: ElevatedButton(
@@ -52,7 +83,7 @@ class SecondScreen extends StatelessWidget {
           onPressed: () {
             Navigator.pop(context);
           },
-          child: Text('Go back!'),
+          child: Text('Go back to Room Selection!'),
         ),
       ),
     );
