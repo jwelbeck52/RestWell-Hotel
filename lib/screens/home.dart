@@ -9,7 +9,7 @@ class HomeScreen extends StatelessWidget {
       appBar: MainAppBar(
         "Bester rest",
       ),
-      endDrawer: MainDrawer(),
+      endDrawer: MainDrawer(context),
       body: Center(
         child: ElevatedButton(
           child: Text('Select Rooms'),

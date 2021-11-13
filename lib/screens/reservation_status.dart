@@ -9,7 +9,7 @@ class StatusScreen extends StatelessWidget {
         appBar: MainAppBar(
           "Reservation Status",
         ),
-        endDrawer: MainDrawer(),
+        endDrawer: MainDrawer(context),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

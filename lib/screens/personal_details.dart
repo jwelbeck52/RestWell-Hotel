@@ -9,7 +9,7 @@ class PersonalDetailsScreen extends StatelessWidget {
         appBar: MainAppBar(
           "Personal Details",
         ),
-        endDrawer: MainDrawer(),
+        endDrawer: MainDrawer(context),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

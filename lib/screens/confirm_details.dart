@@ -9,7 +9,7 @@ class DetailsConfirmationScreen extends StatelessWidget {
         appBar: MainAppBar(
           "Details Confirmation",
         ),
-        endDrawer: MainDrawer(),
+        endDrawer: MainDrawer(context),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

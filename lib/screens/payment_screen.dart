@@ -9,7 +9,7 @@ class PaymentScreen extends StatelessWidget {
         appBar: MainAppBar(
           "Make Payment",
         ),
-        endDrawer: MainDrawer(),
+        endDrawer: MainDrawer(context),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

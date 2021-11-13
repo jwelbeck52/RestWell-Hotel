@@ -1,11 +1,35 @@
 import 'package:flutter/material.dart';
 
 @override
-Widget MainDrawer() {
+Widget MainDrawer(BuildContext context) {
   return Drawer(
-    child: ListView(padding: EdgeInsets.zero, children: [
-      DrawerHeader(child: Text("Header")),
-      ListTile(title: Text("Home"))
-    ]),
+    child: ListView(
+      // Important: Remove any padding from the ListView.
+      padding: EdgeInsets.zero,
+      children: [
+        const DrawerHeader(
+          decoration: BoxDecoration(
+            color: Colors.purple,
+          ),
+          child: Text('Drawer Header', style: TextStyle(color: Colors.white)),
+        ),
+        ListTile(
+          title: const Text('Item 1'),
+          onTap: () {
+            // Update the state of the app.
+            // ...
+            Navigator.pop(context);
+          },
+        ),
+        ListTile(
+          title: const Text('Item 2'),
+          onTap: () {
+            // Update the state of the app.
+            // ...
+            Navigator.pop(context);
+          },
+        ),
+      ],
+    ),
   );
 }
