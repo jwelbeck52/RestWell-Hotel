@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:resevation_mgt/widgets/appbar.dart';
+import 'package:resevation_mgt/widgets/drawer.dart';
 
 class StatusScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text("Reservation Status"),
+        appBar: MainAppBar(
+          "Reservation Status",
         ),
+        endDrawer: MainDrawer(),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

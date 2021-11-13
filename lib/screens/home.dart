@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:resevation_mgt/widgets/appbar.dart';
+import 'package:resevation_mgt/widgets/drawer.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('RestWell Hotel'),
+      appBar: MainAppBar(
+        "Bester rest",
       ),
+      endDrawer: MainDrawer(),
       body: Center(
         child: ElevatedButton(
           child: Text('Select Rooms'),

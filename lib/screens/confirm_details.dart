@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:resevation_mgt/widgets/appbar.dart';
+import 'package:resevation_mgt/widgets/drawer.dart';
 
 class DetailsConfirmationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text("Confirm Reservation Details"),
+        appBar: MainAppBar(
+          "Details Confirmation",
         ),
+        endDrawer: MainDrawer(),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

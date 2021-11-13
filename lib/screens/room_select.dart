@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:resevation_mgt/widgets/appbar.dart';
+import 'package:resevation_mgt/widgets/drawer.dart';
 
 class RoomSelectionScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text("Room Selection"),
+        appBar: MainAppBar(
+          "Room Selection",
         ),
+        endDrawer: MainDrawer(),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
