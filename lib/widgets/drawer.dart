@@ -18,7 +18,9 @@ Widget MainDrawer(BuildContext context) {
           onTap: () {
             // Update the state of the app.
             // ...
-            Navigator.pop(context);
+
+            // Navigator.pop(context);
+            Navigator.restorablePopAndPushNamed(context, '/room_selection');
           },
         ),
         ListTile(

@@ -17,6 +17,11 @@ class RoomSelectionScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            TextField(
+              decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: 'Search for the perfect room'),
+            ),
             Image.asset(
               'assets/images/single_room.jpg',
               height: 200,

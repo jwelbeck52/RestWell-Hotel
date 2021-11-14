@@ -10,30 +10,70 @@ class PersonalDetailsScreen extends StatelessWidget {
           "Personal Details",
         ),
         endDrawer: MainDrawer(context),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                'This is the Personal Details Screen',
-                style: TextStyle(fontSize: 23),
-              ),
-              ElevatedButton(
-                child: Text('Go to Payments'),
-                // color: Colors.orangeAccent,
-                onPressed: () {
-                  Navigator.pushNamed(context, '/payment');
-                },
-              ),
-              ElevatedButton(
-                // color: Colors.blueGrey,
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: Text('Go back to Room Selection!'),
-              ),
-            ],
+        body: SingleChildScrollView(
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  'This is the Personal Details Screen',
+                  style: TextStyle(fontSize: 23),
+                ),
+                TextField(
+                  decoration: InputDecoration(
+                      labelText: 'Full Name',
+                      labelStyle: TextStyle(
+                        color: Colors.black,
+                        fontSize: 22,
+                      )),
+                ),
+                TextField(
+                  decoration: InputDecoration(
+                      labelText: 'Email Address',
+                      labelStyle: TextStyle(
+                        color: Colors.black,
+                        fontSize: 22,
+                      )),
+                ),
+                TextField(
+                  obscureText: true,
+                  enableSuggestions: false,
+                  autocorrect: false,
+                  decoration: InputDecoration(
+                      labelText: 'Password',
+                      labelStyle: TextStyle(
+                        color: Colors.black,
+                        fontSize: 22,
+                      )),
+                ),
+                TextField(
+                  obscureText: true,
+                  enableSuggestions: false,
+                  autocorrect: false,
+                  decoration: InputDecoration(
+                      labelText: 'Confirm Password',
+                      labelStyle: TextStyle(
+                        color: Colors.black,
+                        fontSize: 22,
+                      )),
+                ),
+                ElevatedButton(
+                  child: Text('Go to Payments'),
+                  // color: Colors.orangeAccent,
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/payment');
+                  },
+                ),
+                ElevatedButton(
+                  // color: Colors.blueGrey,
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text('Go back to Room Selection!'),
+                ),
+              ],
+            ),
           ),
         ));
   }
