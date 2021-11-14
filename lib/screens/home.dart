@@ -38,45 +38,107 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MainAppBar(
-        "RestWell Hotel",
-      ),
-      endDrawer: MainDrawer(context),
-      body: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          Text('Select your start date', textAlign: TextAlign.left),
-          Row(children: [
-            Text("${selectedStartDate.toLocal()}".split(' ')[0]),
-            SizedBox(
-              height: 20.0,
-            ),
-            ElevatedButton(
-              onPressed: () => _selectStartDate(context),
-              child: Text('Select Check-in date'),
-            ),
-          ]),
-          Text('Select your start date', textAlign: TextAlign.left),
-          Row(children: [
-            Text("${selectedEndDate.toLocal()}".split(' ')[0]),
-            SizedBox(
-              height: 20.0,
-            ),
-            ElevatedButton(
-              onPressed: () => _selectEndDate(context),
-              child: Text('Select Check-out date'),
-            ),
-          ]),
-          ElevatedButton(
-            child: Text('Select Rooms'),
-            // color: Colors.orangeAccent,
-            onPressed: () {
-              Navigator.pushNamed(context, '/room_selection');
-            },
+        appBar: MainAppBar(
+          "RestWell Hotel",
+        ),
+        endDrawer: MainDrawer(context),
+        body: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              SizedBox(
+                height: 20,
+              ),
+              Text(
+                'Make A Reservation',
+                style: TextStyle(fontSize: 23),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Column(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.all(13),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Text('Select your start date:',
+                            textAlign: TextAlign.left,
+                            style: TextStyle(fontSize: 17)),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Row(children: [
+                          Text(
+                            "${selectedStartDate.toLocal()}".split(' ')[0],
+                          ),
+                          SizedBox(
+                            width: 20.0,
+                          ),
+                          ElevatedButton(
+                            onPressed: () => _selectStartDate(context),
+                            child: Text('Check-in date'),
+                          ),
+                        ]),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Text('Select your end date:',
+                            textAlign: TextAlign.left,
+                            style: TextStyle(fontSize: 17)),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Row(children: [
+                          Text("${selectedEndDate.toLocal()}".split(' ')[0]),
+                          SizedBox(
+                            width: 20.0,
+                          ),
+                          ElevatedButton(
+                            onPressed: () => _selectEndDate(context),
+                            child: Text('Check-out date'),
+                          ),
+                        ]),
+                        TextField(
+                          keyboardType: TextInputType.number,
+                          decoration: InputDecoration(
+                            labelText: 'Number of Adults:',
+                            // labelStyle: TextStyle(
+                            //   color: Colors.black,
+                            //   fontSize: 22,
+                            // )
+                          ),
+                        ),
+                        TextField(
+                          keyboardType: TextInputType.number,
+                          decoration: InputDecoration(
+                            labelText: 'Number of Children:',
+                            // labelStyle: TextStyle(
+                            //   color: Colors.black,
+                            //   fontSize: 22,
+                            // )
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              ElevatedButton(
+                child: Text('Select Rooms'),
+                // color: Colors.orangeAccent,
+                onPressed: () {
+                  Navigator.pushNamed(context, '/room_selection');
+                },
+              ),
+            ],
           ),
-        ],
-      ),
-    );
+        ));
   }
 }

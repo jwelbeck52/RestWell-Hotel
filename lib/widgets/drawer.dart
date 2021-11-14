@@ -11,10 +11,10 @@ Widget MainDrawer(BuildContext context) {
           decoration: BoxDecoration(
             color: Colors.purple,
           ),
-          child: Text('Drawer Header', style: TextStyle(color: Colors.white)),
+          child: Text('RestWell Hotel', style: TextStyle(color: Colors.white)),
         ),
         ListTile(
-          title: const Text('Item 1'),
+          title: const Text('Select Rooms'),
           onTap: () {
             // Update the state of the app.
             // ...
@@ -24,7 +24,7 @@ Widget MainDrawer(BuildContext context) {
           },
         ),
         ListTile(
-          title: const Text('Item 2'),
+          title: const Text('Go Back'),
           onTap: () {
             // Update the state of the app.
             // ...

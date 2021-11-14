@@ -16,14 +16,14 @@ class DetailsConfirmationScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                'This is the Reservation Confirmation Screen',
+                'Confirm Your Details',
                 style: TextStyle(fontSize: 23),
               ),
               ElevatedButton(
-                child: Text('Reserve My Rooms'),
+                child: Text('Make Payment'),
                 // color: Colors.orangeAccent,
                 onPressed: () {
-                  Navigator.pushNamed(context, '/status');
+                  Navigator.pushNamed(context, '/payment');
                 },
               ),
               ElevatedButton(
@@ -31,7 +31,7 @@ class DetailsConfirmationScreen extends StatelessWidget {
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: Text('Go back to Payment Screen!'),
+                child: Text('Go back to Personal Details Screen!'),
               ),
             ],
           ),

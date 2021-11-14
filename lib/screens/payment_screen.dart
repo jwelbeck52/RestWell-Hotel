@@ -20,10 +20,10 @@ class PaymentScreen extends StatelessWidget {
                 style: TextStyle(fontSize: 23),
               ),
               ElevatedButton(
-                child: Text('Go to Confirm Reservation Details'),
+                child: Text('Complete Payment'),
                 // color: Colors.orangeAccent,
                 onPressed: () {
-                  Navigator.pushNamed(context, '/confirm_details');
+                  Navigator.pushNamed(context, '/status');
                 },
               ),
               ElevatedButton(
@@ -31,7 +31,7 @@ class PaymentScreen extends StatelessWidget {
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: Text('Go back to Personal Details Screen!'),
+                child: Text('Go back to Payment Screen!'),
               ),
             ],
           ),

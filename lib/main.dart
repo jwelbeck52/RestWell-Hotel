@@ -11,7 +11,6 @@ void main() {
     debugShowCheckedModeBanner: false,
     title: 'RestWell Hotel',
     theme: ThemeData(
-      // This is the theme of your application.
       primarySwatch: Colors.purple,
     ),
     // Start the app with the "/" named route. In this case, the app starts
@@ -23,8 +22,8 @@ void main() {
       // When navigating to the "/second" route, build the SecondScreen widget.
       '/room_selection': (context) => RoomSelectionScreen(),
       '/personal_details': (context) => PersonalDetailsScreen(),
-      '/payment': (context) => PaymentScreen(),
       '/confirm_details': (context) => DetailsConfirmationScreen(),
+      '/payment': (context) => PaymentScreen(),
       '/status': (context) => StatusScreen(),
     },
   ));

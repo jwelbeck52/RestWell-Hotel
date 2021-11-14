@@ -16,53 +16,66 @@ class PersonalDetailsScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                SizedBox(
+                  height: 20,
+                ),
                 Text(
-                  'This is the Personal Details Screen',
+                  'Enter Your Personal Details',
                   style: TextStyle(fontSize: 23),
                 ),
-                TextField(
-                  decoration: InputDecoration(
-                      labelText: 'Full Name',
-                      labelStyle: TextStyle(
-                        color: Colors.black,
-                        fontSize: 22,
-                      )),
+                SizedBox(
+                  height: 20,
                 ),
                 TextField(
                   decoration: InputDecoration(
-                      labelText: 'Email Address',
-                      labelStyle: TextStyle(
-                        color: Colors.black,
-                        fontSize: 22,
-                      )),
+                    labelText: 'Full Name',
+                    // labelStyle: TextStyle(
+                    //   color: Colors.black,
+                    //   fontSize: 22,
+                    // )
+                  ),
                 ),
                 TextField(
-                  obscureText: true,
-                  enableSuggestions: false,
-                  autocorrect: false,
                   decoration: InputDecoration(
-                      labelText: 'Password',
-                      labelStyle: TextStyle(
-                        color: Colors.black,
-                        fontSize: 22,
-                      )),
+                    labelText: 'Email Address',
+                    // labelStyle: TextStyle(
+                    //   color: Colors.black,
+                    //   fontSize: 22,
+                    // )
+                  ),
                 ),
                 TextField(
                   obscureText: true,
                   enableSuggestions: false,
                   autocorrect: false,
                   decoration: InputDecoration(
-                      labelText: 'Confirm Password',
-                      labelStyle: TextStyle(
-                        color: Colors.black,
-                        fontSize: 22,
-                      )),
+                    labelText: 'Password',
+                    // labelStyle: TextStyle(
+                    //   color: Colors.black,
+                    //   fontSize: 22,
+                    // )
+                  ),
+                ),
+                TextField(
+                  obscureText: true,
+                  enableSuggestions: false,
+                  autocorrect: false,
+                  decoration: InputDecoration(
+                    labelText: 'Confirm Password',
+                    // labelStyle: TextStyle(
+                    //   color: Colors.black,
+                    //   fontSize: 22,
+                    // )
+                  ),
+                ),
+                SizedBox(
+                  height: 40,
                 ),
                 ElevatedButton(
-                  child: Text('Go to Payments'),
+                  child: Text('Confirm'),
                   // color: Colors.orangeAccent,
                   onPressed: () {
-                    Navigator.pushNamed(context, '/payment');
+                    Navigator.pushNamed(context, '/confirm_details');
                   },
                 ),
                 ElevatedButton(
