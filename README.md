@@ -9,9 +9,9 @@
 
 ### Screenshots
 
-![screenshot](./assets/screenshots/home.png) ![screenshot](./assets/screenshots/select_room.png) ![screenshot](./assets/screenshots/details.png) 
+![screenshot](./assets/screenshots/home.PNG) ![screenshot](./assets/screenshots/select_room.PNG) ![screenshot](./assets/screenshots/details.PNG) 
 
-![screenshot](./assets/screenshots/confirm_details.png) ![screenshot](./assets/screenshots/status.png)
+![screenshot](./assets/screenshots/confirm_details.PNG) ![screenshot](./assets/screenshots/status.PNG)
 
 
 
