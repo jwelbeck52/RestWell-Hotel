@@ -113,6 +113,9 @@ class RoomSelectionScreen extends StatelessWidget {
                     SizedBox(
                       height: 25,
                     ),
+                    Divider(
+                      color: Colors.black,
+                    ),
                     Row(
                       children: [
                         SizedBox(
@@ -160,9 +163,6 @@ class RoomSelectionScreen extends StatelessWidget {
                   },
                 ),
               ],
-            ),
-            Row(
-              children: [],
             ),
             SizedBox(
               height: 20,

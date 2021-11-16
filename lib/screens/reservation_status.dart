@@ -10,14 +10,43 @@ class StatusScreen extends StatelessWidget {
           "Reservation Status",
         ),
         endDrawer: MainDrawer(context),
-        body: Center(
+        body: SingleChildScrollView(
+            child: Padding(
+          padding: EdgeInsets.all(13),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                'This is Reservation Status Screen',
+                'Reservation Status',
                 style: TextStyle(fontSize: 23),
+              ),
+              Column(
+                children: [
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text('Payment Successful!'),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text('Here is your Reservation ID: '),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text('RW-9082516-23H', style: TextStyle(fontSize: 21)),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text('Present this ID when checking in at the Hotel'),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text('Thank you!'),
+                  SizedBox(
+                    height: 20,
+                  ),
+                ],
               ),
               ElevatedButton(
                 // color: Colors.blueGrey,
@@ -28,6 +57,6 @@ class StatusScreen extends StatelessWidget {
               ),
             ],
           ),
-        ));
+        )));
   }
 }

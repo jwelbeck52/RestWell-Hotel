@@ -47,16 +47,6 @@ class _HomeScreenState extends State<HomeScreen> {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              SizedBox(
-                height: 20,
-              ),
-              Text(
-                'Make A Reservation',
-                style: TextStyle(fontSize: 23),
-              ),
-              SizedBox(
-                height: 20,
-              ),
               Column(
                 children: [
                   Padding(
@@ -65,6 +55,18 @@ class _HomeScreenState extends State<HomeScreen> {
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Center(
+                          child: Text(
+                            'Make A Reservation',
+                            style: TextStyle(fontSize: 23),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
                         Text('Select your start date:',
                             textAlign: TextAlign.left,
                             style: TextStyle(fontSize: 17)),
@@ -122,20 +124,20 @@ class _HomeScreenState extends State<HomeScreen> {
                             // )
                           ),
                         ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        ElevatedButton(
+                          child: Text('Select Rooms'),
+                          // color: Colors.orangeAccent,
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/room_selection');
+                          },
+                        ),
                       ],
                     ),
                   )
                 ],
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              ElevatedButton(
-                child: Text('Select Rooms'),
-                // color: Colors.orangeAccent,
-                onPressed: () {
-                  Navigator.pushNamed(context, '/room_selection');
-                },
               ),
             ],
           ),
