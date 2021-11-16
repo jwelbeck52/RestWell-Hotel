@@ -14,17 +14,33 @@ Widget MainDrawer(BuildContext context) {
           child: Text('RestWell Hotel', style: TextStyle(color: Colors.white)),
         ),
         ListTile(
-          title: const Text('Select Rooms'),
+          title: const Text('New Reservation'),
           onTap: () {
             // Update the state of the app.
             // ...
 
-            // Navigator.pop(context);
-            Navigator.restorablePopAndPushNamed(context, '/room_selection');
+            Navigator.pop(context);
+            // Navigator.restorablePopAndPushNamed(context, '/room_selection');
           },
         ),
         ListTile(
-          title: const Text('Go Back'),
+          title: const Text('Terms & Conditions'),
+          onTap: () {
+            // Update the state of the app.
+            // ...
+            Navigator.pop(context);
+          },
+        ),
+        ListTile(
+          title: const Text('Privacy Policy'),
+          onTap: () {
+            // Update the state of the app.
+            // ...
+            Navigator.pop(context);
+          },
+        ),
+        ListTile(
+          title: const Text('Frequently Asked Questions'),
           onTap: () {
             // Update the state of the app.
             // ...
