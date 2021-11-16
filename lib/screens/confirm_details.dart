@@ -241,7 +241,7 @@ class DetailsConfirmationScreen extends StatelessWidget {
                       SizedBox(
                         width: 45,
                       ),
-                      Text('300 x 1 + 600 x 3   =         2100.00',
+                      Text('300 x 1 + 600 x 3   =         2100',
                           style: TextStyle(fontWeight: FontWeight.bold)),
                       // SizedBox(
                       //   width: 76,
@@ -262,7 +262,7 @@ class DetailsConfirmationScreen extends StatelessWidget {
                       SizedBox(
                         width: 67,
                       ),
-                      Text('2100.00 x 5        =      10,500.00',
+                      Text('2100.00 x 5        =      10,500',
                           style: TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
