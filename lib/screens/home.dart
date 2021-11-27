@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:resevation_mgt/widgets/appbar.dart';
 import 'package:resevation_mgt/widgets/drawer.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -104,15 +105,12 @@ class _HomeScreenState extends State<HomeScreen> {
                             child: Text('Check-out date'),
                           ),
                         ]),
-                        TextField(
-                          keyboardType: TextInputType.number,
+                        FormBuilderTextField(
+                          name: 'noOfAdults',
                           decoration: InputDecoration(
-                            labelText: 'Number of Adults:',
-                            // labelStyle: TextStyle(
-                            //   color: Colors.black,
-                            //   fontSize: 22,
-                            // )
+                            labelText: 'Number of Adults',
                           ),
+                          keyboardType: TextInputType.number,
                         ),
                         TextField(
                           keyboardType: TextInputType.number,
