@@ -9,7 +9,7 @@ Widget MainDrawer(BuildContext context) {
       children: [
         const DrawerHeader(
           decoration: BoxDecoration(
-            color: Colors.purple,
+            color: Colors.green,
           ),
           child: Text('RestWell Hotel', style: TextStyle(color: Colors.white)),
         ),

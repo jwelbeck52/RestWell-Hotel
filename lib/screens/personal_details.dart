@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:resevation_mgt/widgets/appbar.dart';
 import 'package:resevation_mgt/widgets/drawer.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 
 class PersonalDetailsScreen extends StatelessWidget {
   @override
@@ -30,7 +31,8 @@ class PersonalDetailsScreen extends StatelessWidget {
                       SizedBox(
                         height: 20,
                       ),
-                      TextField(
+                      FormBuilderTextField(
+                        name: 'fullName',
                         decoration: InputDecoration(
                           labelText: 'Full Name',
                           // labelStyle: TextStyle(
@@ -39,7 +41,8 @@ class PersonalDetailsScreen extends StatelessWidget {
                           // )
                         ),
                       ),
-                      TextField(
+                      FormBuilderTextField(
+                        name: 'email',
                         decoration: InputDecoration(
                           labelText: 'Email Address',
                           // labelStyle: TextStyle(
@@ -48,7 +51,8 @@ class PersonalDetailsScreen extends StatelessWidget {
                           // )
                         ),
                       ),
-                      TextField(
+                      FormBuilderTextField(
+                        name: 'password',
                         obscureText: true,
                         enableSuggestions: false,
                         autocorrect: false,
@@ -60,7 +64,8 @@ class PersonalDetailsScreen extends StatelessWidget {
                           // )
                         ),
                       ),
-                      TextField(
+                      FormBuilderTextField(
+                        name: 'confirmPassword',
                         obscureText: true,
                         enableSuggestions: false,
                         autocorrect: false,

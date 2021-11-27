@@ -11,7 +11,7 @@ void main() {
     debugShowCheckedModeBanner: false,
     title: 'RestWell Hotel',
     theme: ThemeData(
-      primarySwatch: Colors.purple,
+      primarySwatch: Colors.green,
     ),
     // Start the app with the "/" named route. In this case, the app starts
     // on the FirstScreen widget.

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:resevation_mgt/widgets/appbar.dart';
 import 'package:resevation_mgt/widgets/drawer.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:intl/intl.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 class PaymentScreen extends StatelessWidget {
   @override
@@ -26,36 +29,48 @@ class PaymentScreen extends StatelessWidget {
                   // SizedBox(
                   //   height: 20,
                   // ),
-                  TextField(
+                  FormBuilderTextField(
+                    name: 'cardNumber',
                     decoration: InputDecoration(
                       labelText: 'Card Number',
+                      helperText: 'XXXX XXXX XXXX XXXX',
                       // labelStyle: TextStyle(
                       //   color: Colors.black,
                       //   fontSize: 22,
                       // )
                     ),
                   ),
-                  TextField(
+                  FormBuilderTextField(
+                    name: 'fullNameOnCard',
                     decoration: InputDecoration(
                       labelText: 'Full Name on Card',
+                      helperText: 'Enter the name that appears on the card',
+
                       // labelStyle: TextStyle(
                       //   color: Colors.black,
                       //   fontSize: 22,
                       // )
                     ),
                   ),
-                  TextField(
+                  FormBuilderTextField(
+                    name: 'cardExpiry',
                     decoration: InputDecoration(
-                      labelText: 'Expiry Date',
+                      labelText: 'Card Expiry Date',
+                      helperText: 'MM / YY',
                       // labelStyle: TextStyle(
                       //   color: Colors.black,
                       //   fontSize: 22,
                       // )
                     ),
                   ),
-                  TextField(
+                  FormBuilderTextField(
+                    name: 'cardCVC',
+                    obscureText: true,
+                    enableSuggestions: false,
+                    autocorrect: false,
                     decoration: InputDecoration(
                       labelText: 'CVC',
+                      helperText: 'Enter the code at the back of the card',
                       // labelStyle: TextStyle(
                       //   color: Colors.black,
                       //   fontSize: 22,

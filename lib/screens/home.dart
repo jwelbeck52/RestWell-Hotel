@@ -9,33 +9,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  DateTime selectedStartDate = DateTime.now();
-  DateTime selectedEndDate = DateTime.now();
-
-  Future<void> _selectStartDate(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(
-        context: context,
-        initialDate: selectedStartDate,
-        firstDate: DateTime(2015, 8),
-        lastDate: DateTime(2101));
-    if (picked != null && picked != selectedStartDate)
-      setState(() {
-        selectedStartDate = picked;
-      });
-  }
-
-  Future<void> _selectEndDate(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(
-        context: context,
-        initialDate: selectedEndDate,
-        firstDate: DateTime(2015, 8),
-        lastDate: DateTime(2101));
-    if (picked != null && picked != selectedEndDate)
-      setState(() {
-        selectedEndDate = picked;
-      });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,59 +41,31 @@ class _HomeScreenState extends State<HomeScreen> {
                         SizedBox(
                           height: 20,
                         ),
-                        Text('Select your start date:',
-                            textAlign: TextAlign.left,
-                            style: TextStyle(fontSize: 17)),
-                        SizedBox(
-                          height: 5,
+                        FormBuilderDateRangePicker(
+                          name: 'date_range',
+                          firstDate: DateTime(1970),
+                          lastDate: DateTime(2030),
+                          decoration: InputDecoration(
+                            labelText: 'Select Date Range',
+                            helperText: 'Select Your Start and End Dates',
+                            // hintText: 'Hint text',
+                          ),
                         ),
-                        Row(children: [
-                          Text(
-                            "${selectedStartDate.toLocal()}".split(' ')[0],
-                          ),
-                          SizedBox(
-                            width: 20.0,
-                          ),
-                          ElevatedButton(
-                            onPressed: () => _selectStartDate(context),
-                            child: Text('Check-in date'),
-                          ),
-                        ]),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Text('Select your end date:',
-                            textAlign: TextAlign.left,
-                            style: TextStyle(fontSize: 17)),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Row(children: [
-                          Text("${selectedEndDate.toLocal()}".split(' ')[0]),
-                          SizedBox(
-                            width: 20.0,
-                          ),
-                          ElevatedButton(
-                            onPressed: () => _selectEndDate(context),
-                            child: Text('Check-out date'),
-                          ),
-                        ]),
                         FormBuilderTextField(
                           name: 'noOfAdults',
                           decoration: InputDecoration(
                             labelText: 'Number of Adults',
+                            helperText: 'Enter the number of adults',
                           ),
                           keyboardType: TextInputType.number,
                         ),
-                        TextField(
-                          keyboardType: TextInputType.number,
+                        FormBuilderTextField(
+                          name: 'noOfChildren',
                           decoration: InputDecoration(
-                            labelText: 'Number of Children:',
-                            // labelStyle: TextStyle(
-                            //   color: Colors.black,
-                            //   fontSize: 22,
-                            // )
+                            labelText: 'Number of Children',
+                            helperText: 'Enter the number of children',
                           ),
+                          keyboardType: TextInputType.number,
                         ),
                         SizedBox(
                           height: 20,

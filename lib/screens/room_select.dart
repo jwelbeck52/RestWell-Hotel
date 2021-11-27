@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:resevation_mgt/widgets/appbar.dart';
 import 'package:resevation_mgt/widgets/drawer.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 
 class RoomSelectionScreen extends StatelessWidget {
   @override
@@ -66,7 +67,17 @@ class RoomSelectionScreen extends StatelessWidget {
                       SizedBox(
                         width: 80,
                       ),
-                      Text('1')
+                      Container(
+                        width: 50,
+                        child: FormBuilderTextField(
+                          name: 'noOfSingleRoom',
+                          // decoration: InputDecoration(
+                          //   labelText: 'Number of Children',
+                          //   helperText: 'Enter the number of children',
+                          // ),
+                          keyboardType: TextInputType.number,
+                        ),
+                      ),
                     ]),
                     Row(children: [
                       Column(
@@ -87,17 +98,23 @@ class RoomSelectionScreen extends StatelessWidget {
                       SizedBox(
                         width: 80,
                       ),
-                      Text('3')
+                      Container(
+                        width: 50,
+                        child: FormBuilderTextField(
+                          name: 'noOfDoubleRoom',
+                          keyboardType: TextInputType.number,
+                        ),
+                      ),
                     ]),
                     Row(children: [
                       Column(
                         children: [
                           Image.asset(
-                            'assets/images/single_room.jpg',
+                            'assets/images/executive_room.jpg',
                             height: 100,
                             width: 100,
                           ),
-                          Text('Single Room'),
+                          Text('Executive Room'),
                         ],
                       ),
                       SizedBox(
@@ -108,7 +125,17 @@ class RoomSelectionScreen extends StatelessWidget {
                       SizedBox(
                         width: 80,
                       ),
-                      Text('0')
+                      Container(
+                        width: 50,
+                        child: FormBuilderTextField(
+                          name: 'noOfExecutiveRoom',
+                          // decoration: InputDecoration(
+                          //   labelText: 'Number of Children',
+                          //   helperText: 'Enter the number of children',
+                          // ),
+                          keyboardType: TextInputType.number,
+                        ),
+                      ),
                     ]),
                     SizedBox(
                       height: 25,
