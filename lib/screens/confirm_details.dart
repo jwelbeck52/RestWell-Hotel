@@ -1,9 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:resevation_mgt/widgets/appbar.dart';
 import 'package:resevation_mgt/widgets/drawer.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class DetailsConfirmationScreen extends StatelessWidget {
+class DetailsConfirmationScreen extends StatefulWidget {
   @override
+  State<DetailsConfirmationScreen> createState() =>
+      _DetailsConfirmationScreenState();
+}
+
+class _DetailsConfirmationScreenState extends State<DetailsConfirmationScreen> {
+  String fullName = "";
+  String email = "";
+
+  @override
+  void initState() {
+    getData();
+  }
+
+  getData() async {
+    SharedPreferences data = await SharedPreferences.getInstance();
+    setState(() {
+      fullName = data.getString('fullname') ?? 'hi';
+      email = data.getString('email') ?? '';
+    });
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MainAppBar(
@@ -47,7 +69,7 @@ class DetailsConfirmationScreen extends StatelessWidget {
                       SizedBox(
                         width: 30,
                       ),
-                      Text('John Doe',
+                      Text(fullName,
                           style: TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
@@ -62,7 +84,7 @@ class DetailsConfirmationScreen extends StatelessWidget {
                       SizedBox(
                         width: 32,
                       ),
-                      Text('jdoe@mail.com',
+                      Text(email,
                           style: TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),

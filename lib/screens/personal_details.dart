@@ -2,8 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:resevation_mgt/widgets/appbar.dart';
 import 'package:resevation_mgt/widgets/drawer.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class PersonalDetailsScreen extends StatelessWidget {
+class PersonalDetailsScreen extends StatefulWidget {
+  @override
+  State<PersonalDetailsScreen> createState() => _PersonalDetailsScreenState();
+}
+
+class _PersonalDetailsScreenState extends State<PersonalDetailsScreen> {
+  final fullNameController = TextEditingController();
+  final emailController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,6 +42,7 @@ class PersonalDetailsScreen extends StatelessWidget {
                       ),
                       FormBuilderTextField(
                         name: 'fullName',
+                        controller: fullNameController,
                         decoration: InputDecoration(
                           labelText: 'Full Name',
                           // labelStyle: TextStyle(
@@ -43,6 +53,7 @@ class PersonalDetailsScreen extends StatelessWidget {
                       ),
                       FormBuilderTextField(
                         name: 'email',
+                        controller: emailController,
                         decoration: InputDecoration(
                           labelText: 'Email Address',
                           // labelStyle: TextStyle(
@@ -90,6 +101,7 @@ class PersonalDetailsScreen extends StatelessWidget {
                       ElevatedButton(
                         // color: Colors.blueGrey,
                         onPressed: () {
+                          saveData();
                           Navigator.pop(context);
                         },
                         child: Text('Go back to Room Selection!'),
@@ -101,5 +113,11 @@ class PersonalDetailsScreen extends StatelessWidget {
             ),
           ),
         ));
+  }
+
+  void saveData() async {
+    SharedPreferences data = await SharedPreferences.getInstance();
+    data.setString('fullName', fullNameController.text);
+    data.setString('email', emailController.text);
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:resevation_mgt/widgets/appbar.dart';
 import 'package:resevation_mgt/widgets/drawer.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -9,14 +10,38 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  String fullName = "";
+  String email = "";
+  final _formKey = GlobalKey<FormBuilderState>();
+
   @override
+  void initState() {
+    getData();
+  }
+
+  getData() async {
+    SharedPreferences data = await SharedPreferences.getInstance();
+    setState(() {
+      fullName = data.getString('fullname') ?? 'hi';
+      email = data.getString('email') ?? '';
+    });
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: MainAppBar(
-          "RestWell Hotel",
-        ),
-        endDrawer: MainDrawer(context),
-        body: SingleChildScrollView(
+      appBar: MainAppBar(
+        "RestWell Hotel",
+      ),
+      endDrawer: MainDrawer(context),
+      body: SingleChildScrollView(
+        child: FormBuilder(
+          key: _formKey,
+          onChanged: () => print("success"),
+          initialValue: {
+            'stayDateRange': DateTime(1970),
+            'noOfAdults': '0',
+            'noOfChildren': '0',
+          },
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -34,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         Center(
                           child: Text(
-                            'Make A Reservation',
+                            'Welcome,' + fullName + ' Make A Reservation',
                             style: TextStyle(fontSize: 23),
                           ),
                         ),
@@ -42,8 +67,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           height: 20,
                         ),
                         FormBuilderDateRangePicker(
-                          name: 'date_range',
-                          firstDate: DateTime(1970),
+                          name: 'stayDateRange',
+                          firstDate: DateTime(2021),
                           lastDate: DateTime(2030),
                           decoration: InputDecoration(
                             labelText: 'Select Date Range',
@@ -84,6 +109,8 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 }
