@@ -13,14 +13,22 @@ class _PersonalDetailsScreenState extends State<PersonalDetailsScreen> {
   final fullNameController = TextEditingController();
   final emailController = TextEditingController();
 
+  void saveData() async {
+    SharedPreferences data = await SharedPreferences.getInstance();
+    data.setString('fullName', fullNameController.text);
+    data.setString('email', emailController.text);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: MainAppBar(
-          "Personal Details",
-        ),
-        endDrawer: MainDrawer(context),
-        body: SingleChildScrollView(
+      appBar: MainAppBar(
+        "Personal Details",
+      ),
+      endDrawer: MainDrawer(context),
+      body: SingleChildScrollView(
+        child: FormBuilder(
+          onChanged: saveData,
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -101,7 +109,6 @@ class _PersonalDetailsScreenState extends State<PersonalDetailsScreen> {
                       ElevatedButton(
                         // color: Colors.blueGrey,
                         onPressed: () {
-                          saveData();
                           Navigator.pop(context);
                         },
                         child: Text('Go back to Room Selection!'),
@@ -112,12 +119,8 @@ class _PersonalDetailsScreenState extends State<PersonalDetailsScreen> {
               ],
             ),
           ),
-        ));
-  }
-
-  void saveData() async {
-    SharedPreferences data = await SharedPreferences.getInstance();
-    data.setString('fullName', fullNameController.text);
-    data.setString('email', emailController.text);
+        ),
+      ),
+    );
   }
 }

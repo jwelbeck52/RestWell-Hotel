@@ -21,7 +21,7 @@ class _DetailsConfirmationScreenState extends State<DetailsConfirmationScreen> {
   getData() async {
     SharedPreferences data = await SharedPreferences.getInstance();
     setState(() {
-      fullName = data.getString('fullname') ?? 'hi';
+      fullName = data.getString('fullname') ?? '';
       email = data.getString('email') ?? '';
     });
   }

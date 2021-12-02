@@ -11,7 +11,6 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   String fullName = "";
-  String email = "";
   final _formKey = GlobalKey<FormBuilderState>();
 
   @override
@@ -22,8 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
   getData() async {
     SharedPreferences data = await SharedPreferences.getInstance();
     setState(() {
-      fullName = data.getString('fullname') ?? 'hi';
-      email = data.getString('email') ?? '';
+      fullName = data.getString('fullname') ?? '';
     });
   }
 
@@ -36,9 +34,10 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SingleChildScrollView(
         child: FormBuilder(
           key: _formKey,
-          onChanged: () => print("success"),
+          onChanged: getData,
           initialValue: {
-            'stayDateRange': DateTime(1970),
+            'stayDateRange':
+                DateTimeRange(start: DateTime(2021), end: DateTime(2030)),
             'noOfAdults': '0',
             'noOfChildren': '0',
           },
