@@ -11,19 +11,27 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   String fullName = "";
+  DateTime selectedStartDate = DateTime.now();
   final _formKey = GlobalKey<FormBuilderState>();
+  final childerncontrollter = TextEditingController();
+  final adultcontroller = TextEditingController();
+  final datecontroller = TextEditingController();
 
   @override
   void initState() {
-    getData();
+    // getData();
   }
 
   getData() async {
-    SharedPreferences data = await SharedPreferences.getInstance();
-    setState(() {
-      fullName = data.getString('fullname') ?? '';
-    });
+    // SharedPreferences data = await SharedPreferences.getInstance();
+    // setState(() {
+    //   fullName = data.getString('fullname') ?? '';
+    // });
   }
+
+  // getval(){
+
+  // }
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
           onChanged: getData,
           initialValue: {
             'stayDateRange':
-                DateTimeRange(start: DateTime(2021), end: DateTime(2030)),
+                DateTimeRange(start: selectedStartDate, end: DateTime(2025)),
             'noOfAdults': '0',
             'noOfChildren': '0',
           },
@@ -67,8 +75,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         FormBuilderDateRangePicker(
                           name: 'stayDateRange',
-                          firstDate: DateTime(2021),
-                          lastDate: DateTime(2030),
+                          controller: datecontroller,
+                          firstDate: selectedStartDate,
+                          lastDate: DateTime(2025),
+                          // onChanged: getval(),
                           decoration: InputDecoration(
                             labelText: 'Select Date Range',
                             helperText: 'Select Your Start and End Dates',
@@ -77,6 +87,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         FormBuilderTextField(
                           name: 'noOfAdults',
+                          controller: adultcontroller,
                           decoration: InputDecoration(
                             labelText: 'Number of Adults',
                             helperText: 'Enter the number of adults',
@@ -85,6 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         FormBuilderTextField(
                           name: 'noOfChildren',
+                          controller: childerncontrollter,
                           decoration: InputDecoration(
                             labelText: 'Number of Children',
                             helperText: 'Enter the number of children',
@@ -98,7 +110,12 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Text('Select Rooms'),
                           // color: Colors.orangeAccent,
                           onPressed: () {
-                            Navigator.pushNamed(context, '/room_selection');
+                            Navigator.pushNamed(context, '/room_selection',
+                                arguments: {
+                                  "dateRange": datecontroller.text,
+                                  "adults": adultcontroller.text,
+                                  "children": childerncontrollter.text,
+                                });
                           },
                         ),
                       ],

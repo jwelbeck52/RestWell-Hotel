@@ -10,8 +10,22 @@ class RoomSelectionScreen extends StatefulWidget {
 
 class _RoomSelectionScreenState extends State<RoomSelectionScreen> {
   final _formKey = GlobalKey<FormBuilderState>();
+  final singleroomcontroller = TextEditingController();
+  final doubleroomcontroller = TextEditingController();
+  final executiveroomcontroller = TextEditingController();
+  String dateRange = '', adults = '', children = '';
+  Map data = {};
+
+  getData() {
+    dateRange = data['dateRange'] as String;
+    adults = data['adults'] as String;
+    children = data['children'] as String;
+  }
+
   @override
   Widget build(BuildContext context) {
+    data = ModalRoute.of(context)!.settings.arguments as Map;
+    getData();
     return Scaffold(
       resizeToAvoidBottomInset: false, // set it to false
       appBar: MainAppBar(
@@ -84,6 +98,7 @@ class _RoomSelectionScreenState extends State<RoomSelectionScreen> {
                           width: 50,
                           child: FormBuilderTextField(
                             name: 'noOfSingleRoom',
+                            controller: singleroomcontroller,
                             // decoration: InputDecoration(
                             //   labelText: 'Number of Children',
                             //   helperText: 'Enter the number of children',
@@ -115,6 +130,7 @@ class _RoomSelectionScreenState extends State<RoomSelectionScreen> {
                           width: 50,
                           child: FormBuilderTextField(
                             name: 'noOfDoubleRoom',
+                            controller: doubleroomcontroller,
                             keyboardType: TextInputType.number,
                           ),
                         ),
@@ -142,6 +158,7 @@ class _RoomSelectionScreenState extends State<RoomSelectionScreen> {
                           width: 50,
                           child: FormBuilderTextField(
                             name: 'noOfExecutiveRoom',
+                            controller: executiveroomcontroller,
                             // decoration: InputDecoration(
                             //   labelText: 'Number of Children',
                             //   helperText: 'Enter the number of children',
@@ -219,6 +236,14 @@ class _RoomSelectionScreenState extends State<RoomSelectionScreen> {
     //   Navigator.pushNamed(context, '/payment');
     // } else
     //   Navigator.pushNamed(context, '/personal_details');
-    Navigator.pushNamed(context, '/personal_details');
+
+    Navigator.pushNamed(context, '/personal_details', arguments: {
+      'noOfSingleRoom': singleroomcontroller.text,
+      'noOfDoubleRoom': doubleroomcontroller.text,
+      'noOfExecutiveRoom': executiveroomcontroller.text,
+      'dateRange': dateRange,
+      'adults': adults,
+      'children': children,
+    });
   }
 }

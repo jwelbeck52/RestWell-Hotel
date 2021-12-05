@@ -12,15 +12,34 @@ class PersonalDetailsScreen extends StatefulWidget {
 class _PersonalDetailsScreenState extends State<PersonalDetailsScreen> {
   final fullNameController = TextEditingController();
   final emailController = TextEditingController();
+  String single = '',
+      double = '',
+      executive = '',
+      dateRange = '',
+      adults = '',
+      children = '';
+
+  Map data = {};
 
   void saveData() async {
-    SharedPreferences data = await SharedPreferences.getInstance();
-    data.setString('fullName', fullNameController.text);
-    data.setString('email', emailController.text);
+    // SharedPreferences data = await SharedPreferences.getInstance();
+    // data.setString('fullName', fullNameController.text);
+    // data.setString('email', emailController.text);
+  }
+
+  void getData() {
+    single = data['noOfSingleRoom'] as String;
+    double = data['noOfDoubleRoom'] as String;
+    executive = data['noOfExecutiveRoom'] as String;
+    dateRange = data['dateRange'] as String;
+    adults = data['adults'] as String;
+    children = data['children'] as String;
   }
 
   @override
   Widget build(BuildContext context) {
+    data = ModalRoute.of(context)!.settings.arguments as Map;
+    getData();
     return Scaffold(
       appBar: MainAppBar(
         "Personal Details",
@@ -103,7 +122,17 @@ class _PersonalDetailsScreenState extends State<PersonalDetailsScreen> {
                         child: Text('Confirm'),
                         // color: Colors.orangeAccent,
                         onPressed: () {
-                          Navigator.pushNamed(context, '/confirm_details');
+                          Navigator.pushNamed(context, '/confirm_details',
+                              arguments: {
+                                "fullName": fullNameController.text,
+                                "email": emailController.text,
+                                "single": single,
+                                "double": double,
+                                "executive": executive,
+                                'dateRange': dateRange,
+                                'adults': adults,
+                                'children': children,
+                              });
                         },
                       ),
                       ElevatedButton(

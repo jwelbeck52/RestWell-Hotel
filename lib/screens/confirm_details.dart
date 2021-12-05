@@ -10,23 +10,47 @@ class DetailsConfirmationScreen extends StatefulWidget {
 }
 
 class _DetailsConfirmationScreenState extends State<DetailsConfirmationScreen> {
-  String fullName = "";
-  String email = "";
+  String fullName = '',
+      email = '',
+      noOfSingle = '',
+      noOfDouble = '',
+      noOfExecutive = '',
+      dateRange = '',
+      adults = '',
+      children = '',
+      startDate = '',
+      endDate = '';
+  Map data = {};
 
   @override
   void initState() {
-    getData();
+    super.initState();
   }
 
   getData() async {
-    SharedPreferences data = await SharedPreferences.getInstance();
-    setState(() {
-      fullName = data.getString('fullname') ?? '';
-      email = data.getString('email') ?? '';
-    });
+    fullName = data['fullName'] ?? "empty";
+    email = data['email'] ?? "empty";
+    noOfSingle = data['single'] ?? "0";
+    noOfDouble = data['double'] ?? "0";
+    noOfExecutive = data['executive'] ?? "0";
+    dateRange = data['dateRange'] as String;
+    adults = data['adults'] as String;
+    children = data['children'] as String;
+    startDate = dateRange[0].trim();
+    endDate = dateRange[1].trim();
+
+    // single = data['single'];
+    // SharedPreferences data = await SharedPreferences.getInstance();
+    // setState(() {
+    //   fullName = data.getString('fullname') ?? '';
+    //   email = data.getString('email') ?? '';
+    // });
   }
 
   Widget build(BuildContext context) {
+    data = ModalRoute.of(context)!.settings.arguments as Map;
+    getData();
+
     return Scaffold(
       appBar: MainAppBar(
         "Details Confirmation",
@@ -124,7 +148,7 @@ class _DetailsConfirmationScreenState extends State<DetailsConfirmationScreen> {
                       SizedBox(
                         width: 22,
                       ),
-                      Text('2021-11-17',
+                      Text(startDate,
                           style: TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
@@ -140,7 +164,7 @@ class _DetailsConfirmationScreenState extends State<DetailsConfirmationScreen> {
                       SizedBox(
                         width: 20,
                       ),
-                      Text('2021-11-22',
+                      Text(endDate,
                           style: TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
@@ -165,7 +189,8 @@ class _DetailsConfirmationScreenState extends State<DetailsConfirmationScreen> {
                       SizedBox(
                         width: 2,
                       ),
-                      Text('5', style: TextStyle(fontWeight: FontWeight.bold)),
+                      Text(adults,
+                          style: TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
                   SizedBox(
@@ -177,7 +202,8 @@ class _DetailsConfirmationScreenState extends State<DetailsConfirmationScreen> {
                       SizedBox(
                         width: 5,
                       ),
-                      Text('3', style: TextStyle(fontWeight: FontWeight.bold)),
+                      Text(children,
+                          style: TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
 
@@ -228,7 +254,7 @@ class _DetailsConfirmationScreenState extends State<DetailsConfirmationScreen> {
                     SizedBox(
                       width: 80,
                     ),
-                    Text('1')
+                    Text(noOfSingle)
                   ]),
                   Row(children: [
                     Column(
@@ -249,7 +275,28 @@ class _DetailsConfirmationScreenState extends State<DetailsConfirmationScreen> {
                     SizedBox(
                       width: 80,
                     ),
-                    Text('3')
+                    Text(noOfDouble)
+                  ]),
+                  Row(children: [
+                    Column(
+                      children: [
+                        Image.asset(
+                          'assets/images/executive_room.jpg',
+                          height: 100,
+                          width: 100,
+                        ),
+                        Text('Executive Room'),
+                      ],
+                    ),
+                    SizedBox(
+                      width: 50,
+                    ),
+                    Text('1000.00',
+                        style: TextStyle(fontWeight: FontWeight.bold)),
+                    SizedBox(
+                      width: 78,
+                    ),
+                    Text(noOfExecutive)
                   ]),
                   SizedBox(
                     height: 15,
