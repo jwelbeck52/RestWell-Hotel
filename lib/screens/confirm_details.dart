@@ -36,8 +36,9 @@ class _DetailsConfirmationScreenState extends State<DetailsConfirmationScreen> {
     dateRange = data['dateRange'] as String;
     adults = data['adults'] as String;
     children = data['children'] as String;
-    startDate = dateRange[0].trim();
-    endDate = dateRange[1].trim();
+    var dateList = dateRange.split('-');
+    startDate = dateList[0].trim();
+    endDate = dateList[1].trim();
 
     // single = data['single'];
     // SharedPreferences data = await SharedPreferences.getInstance();
