@@ -10,8 +10,8 @@ class PersonalDetailsScreen extends StatefulWidget {
 }
 
 class _PersonalDetailsScreenState extends State<PersonalDetailsScreen> {
-  final fullNameController = TextEditingController();
-  final emailController = TextEditingController();
+  final fullNameController = TextEditingController()..text = '0';
+  final emailController = TextEditingController()..text = '0';
   String single = '',
       double = '',
       executive = '',
@@ -22,8 +22,8 @@ class _PersonalDetailsScreenState extends State<PersonalDetailsScreen> {
   Map data = {};
 
   void saveData() async {
-    // SharedPreferences data = await SharedPreferences.getInstance();
-    // data.setString('fullName', fullNameController.text);
+    SharedPreferences data = await SharedPreferences.getInstance();
+    data.setString('fullName', fullNameController.text);
     // data.setString('email', emailController.text);
   }
 
@@ -138,6 +138,7 @@ class _PersonalDetailsScreenState extends State<PersonalDetailsScreen> {
                       ElevatedButton(
                         // color: Colors.blueGrey,
                         onPressed: () {
+                          saveData();
                           Navigator.pop(context);
                         },
                         child: Text('Go back to Room Selection!'),

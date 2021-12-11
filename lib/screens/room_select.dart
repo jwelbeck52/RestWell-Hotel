@@ -10,9 +10,9 @@ class RoomSelectionScreen extends StatefulWidget {
 
 class _RoomSelectionScreenState extends State<RoomSelectionScreen> {
   final _formKey = GlobalKey<FormBuilderState>();
-  final singleroomcontroller = TextEditingController();
-  final doubleroomcontroller = TextEditingController();
-  final executiveroomcontroller = TextEditingController();
+  final singleroomcontroller = TextEditingController()..text = '0';
+  final doubleroomcontroller = TextEditingController()..text = '0';
+  final executiveroomcontroller = TextEditingController()..text = '0';
   String dateRange = '', adults = '', children = '';
   Map data = {};
 

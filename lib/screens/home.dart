@@ -10,24 +10,37 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  String fullName = "";
+  String fullName = '';
   DateTime selectedStartDate = DateTime.now();
-  DateTime selectedendDate = DateTime.now();
+  DateTime selectedendDate = DateTime.now().add(const Duration(days: 2));
   final _formKey = GlobalKey<FormBuilderState>();
   final childerncontrollter = TextEditingController();
-  final adultcontroller = TextEditingController();
-  final datecontroller = TextEditingController();
+  final adultcontroller = TextEditingController()..text = '0';
+  final datecontroller = TextEditingController()..text = '0';
 
   @override
   void initState() {
-    // getData();
+    getData();
   }
 
   getData() async {
-    // SharedPreferences data = await SharedPreferences.getInstance();
-    // setState(() {
-    //   fullName = data.getString('fullname') ?? '';
-    // });
+    SharedPreferences data = await SharedPreferences.getInstance();
+    setState(() {
+      fullName = data.getString('fullName') ?? '';
+    });
+  }
+
+  showName() {
+    if (fullName != null)
+      return Text(
+        'Welcome back, ' + fullName + '! Make A Reservation',
+        style: TextStyle(fontSize: 23),
+      );
+    else
+      return Text(
+        'Welcome, Make A Reservation',
+        style: TextStyle(fontSize: 23),
+      );
   }
 
   // getval(){
@@ -66,10 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           height: 20,
                         ),
                         Center(
-                          child: Text(
-                            'Welcome,' + fullName + ' Make A Reservation',
-                            style: TextStyle(fontSize: 23),
-                          ),
+                          child: showName(),
                         ),
                         SizedBox(
                           height: 20,
