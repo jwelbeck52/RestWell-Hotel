@@ -12,6 +12,7 @@ class DetailsConfirmationScreen extends StatefulWidget {
 class _DetailsConfirmationScreenState extends State<DetailsConfirmationScreen> {
   String fullName = '',
       email = '',
+      phone = '',
       noOfSingle = '',
       noOfDouble = '',
       noOfExecutive = '',
@@ -30,6 +31,7 @@ class _DetailsConfirmationScreenState extends State<DetailsConfirmationScreen> {
   getData() async {
     fullName = data['fullName'] ?? "empty";
     email = data['email'] ?? "empty";
+    phone = data['phone'] ?? "empty";
     noOfSingle = data['single'] ?? "0";
     noOfDouble = data['double'] ?? "0";
     noOfExecutive = data['executive'] ?? "0";
@@ -122,7 +124,7 @@ class _DetailsConfirmationScreenState extends State<DetailsConfirmationScreen> {
                       SizedBox(
                         width: 25,
                       ),
-                      Text('+44 1231578541',
+                      Text(phone,
                           style: TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),

@@ -10,21 +10,42 @@ class PersonalDetailsScreen extends StatefulWidget {
 }
 
 class _PersonalDetailsScreenState extends State<PersonalDetailsScreen> {
-  final fullNameController = TextEditingController()..text = '0';
-  final emailController = TextEditingController()..text = '0';
   String single = '',
       double = '',
       executive = '',
       dateRange = '',
       adults = '',
-      children = '';
+      children = '',
+      storedName = '',
+      storedEmail = '',
+      storedPhone = '';
+
+  var fullNameController, emailController, phoneController;
 
   Map data = {};
+
+  @override
+  initState() {
+    getStoredData();
+  }
+
+  getStoredData() async {
+    SharedPreferences storedData = await SharedPreferences.getInstance();
+    setState(() {
+      storedName = storedData.getString('fullName') ?? '';
+      storedEmail = storedData.getString('email') ?? '';
+      storedPhone = storedData.getString('phone') ?? '';
+      fullNameController = TextEditingController()..text = storedName;
+      emailController = TextEditingController()..text = storedEmail;
+      phoneController = TextEditingController()..text = storedPhone;
+    });
+  }
 
   void saveData() async {
     SharedPreferences data = await SharedPreferences.getInstance();
     data.setString('fullName', fullNameController.text);
-    // data.setString('email', emailController.text);
+    data.setString('email', emailController.text);
+    data.setString('phone', phoneController.text);
   }
 
   void getData() {
@@ -90,31 +111,42 @@ class _PersonalDetailsScreenState extends State<PersonalDetailsScreen> {
                         ),
                       ),
                       FormBuilderTextField(
-                        name: 'password',
-                        obscureText: true,
-                        enableSuggestions: false,
-                        autocorrect: false,
+                        name: 'phone',
+                        controller: phoneController,
                         decoration: InputDecoration(
-                          labelText: 'Password',
+                          labelText: 'Phone Number',
                           // labelStyle: TextStyle(
                           //   color: Colors.black,
                           //   fontSize: 22,
                           // )
                         ),
                       ),
-                      FormBuilderTextField(
-                        name: 'confirmPassword',
-                        obscureText: true,
-                        enableSuggestions: false,
-                        autocorrect: false,
-                        decoration: InputDecoration(
-                          labelText: 'Confirm Password',
-                          // labelStyle: TextStyle(
-                          //   color: Colors.black,
-                          //   fontSize: 22,
-                          // )
-                        ),
-                      ),
+                      // FormBuilderTextField(
+                      //   name: 'password',
+                      //   obscureText: true,
+                      //   enableSuggestions: false,
+                      //   autocorrect: false,
+                      //   decoration: InputDecoration(
+                      //     labelText: 'Password',
+                      //     // labelStyle: TextStyle(
+                      //     //   color: Colors.black,
+                      //     //   fontSize: 22,
+                      //     // )
+                      //   ),
+                      // ),
+                      // FormBuilderTextField(
+                      //   name: 'confirmPassword',
+                      //   obscureText: true,
+                      //   enableSuggestions: false,
+                      //   autocorrect: false,
+                      //   decoration: InputDecoration(
+                      //     labelText: 'Confirm Password',
+                      //     // labelStyle: TextStyle(
+                      //     //   color: Colors.black,
+                      //     //   fontSize: 22,
+                      //     // )
+                      //   ),
+                      // ),
                       SizedBox(
                         height: 40,
                       ),
@@ -126,6 +158,7 @@ class _PersonalDetailsScreenState extends State<PersonalDetailsScreen> {
                               arguments: {
                                 "fullName": fullNameController.text,
                                 "email": emailController.text,
+                                "phone": phoneController.text,
                                 "single": single,
                                 "double": double,
                                 "executive": executive,

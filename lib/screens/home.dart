@@ -14,9 +14,9 @@ class _HomeScreenState extends State<HomeScreen> {
   DateTime selectedStartDate = DateTime.now();
   DateTime selectedendDate = DateTime.now().add(const Duration(days: 2));
   final _formKey = GlobalKey<FormBuilderState>();
-  final childerncontrollter = TextEditingController();
+  final childerncontrollter = TextEditingController()..text = '0';
   final adultcontroller = TextEditingController()..text = '0';
-  final datecontroller = TextEditingController()..text = '0';
+  final datecontroller = TextEditingController();
 
   @override
   void initState() {
