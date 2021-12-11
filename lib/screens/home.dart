@@ -31,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   showName() {
-    if (fullName != null)
+    if (fullName != '')
       return Text(
         'Welcome back, ' + fullName + '! Make A Reservation',
         style: TextStyle(fontSize: 23),
