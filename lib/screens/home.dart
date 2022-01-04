@@ -30,6 +30,10 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  refresh() {
+    getData();
+  }
+
   showName() {
     if (fullName != '')
       return Text(
@@ -117,6 +121,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         SizedBox(
                           height: 20,
                         ),
+                        ElevatedButton(
+                            onPressed: refresh, child: Text('Refresh')),
                         ElevatedButton(
                           child: Text('Select Rooms'),
                           // color: Colors.orangeAccent,
