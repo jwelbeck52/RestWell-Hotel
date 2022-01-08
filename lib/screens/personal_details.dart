@@ -154,6 +154,7 @@ class _PersonalDetailsScreenState extends State<PersonalDetailsScreen> {
                         child: Text('Confirm'),
                         // color: Colors.orangeAccent,
                         onPressed: () {
+                          saveData();
                           Navigator.pushNamed(context, '/confirm_details',
                               arguments: {
                                 "fullName": fullNameController.text,
