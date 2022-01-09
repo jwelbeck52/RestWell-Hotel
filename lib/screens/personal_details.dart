@@ -36,9 +36,9 @@ class _PersonalDetailsScreenState extends State<PersonalDetailsScreen> {
   void saveDataInObject() {
     reserve1.adults = adults;
     reserve1.children = children;
-    reserve1.fullName = storedName;
-    reserve1.email = storedEmail;
-    reserve1.phone = storedPhone;
+    reserve1.fullName = fullNameController.text;
+    reserve1.email = emailController.text;
+    reserve1.phone = phoneController.text;
     reserve1.noOfSingle = single;
     reserve1.noOfDouble = double;
     reserve1.noOfExecutive = executive;
@@ -63,9 +63,11 @@ class _PersonalDetailsScreenState extends State<PersonalDetailsScreen> {
 
   void saveData() async {
     SharedPreferences data = await SharedPreferences.getInstance();
-    data.setString('fullName', fullNameController.text);
-    data.setString('email', emailController.text);
-    data.setString('phone', phoneController.text);
+    setState(() {
+      data.setString('fullName', fullNameController.text);
+      data.setString('email', emailController.text);
+      data.setString('phone', phoneController.text);
+    });
   }
 
   void getData() {

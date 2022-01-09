@@ -33,20 +33,8 @@ class _DetailsConfirmationScreenState extends State<DetailsConfirmationScreen> {
   }
 
   getData() async {
-    // fullName = data['fullName'] ?? "empty";
-    // email = data['email'] ?? "empty";
-    // phone = data['phone'] ?? "empty";
-    // noOfSingle = data['single'] ?? "0";
-    // noOfDouble = data['double'] ?? "0";
-    // noOfExecutive = data['executive'] ?? "0";
-    // dateRange = data['dateRange'] as String;
-    // adults = data['adults'] as String;
-    // children = data['children'] as String;
-    // var dateList = dateRange.split('-');
-    // startDate = dateList[0].trim();
-    // endDate = dateList[1].trim();
     reserve1 = data['reservation'];
-    inspect(reserve1);
+    //inspect(reserve1);
 
     // single = data['single'];
     // SharedPreferences data = await SharedPreferences.getInstance();
