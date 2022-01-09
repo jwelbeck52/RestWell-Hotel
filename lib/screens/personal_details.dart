@@ -3,6 +3,7 @@ import 'package:resevation_mgt/widgets/appbar.dart';
 import 'package:resevation_mgt/widgets/drawer.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../models/reservation.dart';
 
 class PersonalDetailsScreen extends StatefulWidget {
   @override
@@ -18,15 +19,34 @@ class _PersonalDetailsScreenState extends State<PersonalDetailsScreen> {
       children = '',
       storedName = '',
       storedEmail = '',
-      storedPhone = '';
+      storedPhone = '',
+      startDate = '',
+      endDate = '';
 
   var fullNameController, emailController, phoneController;
+  var reserve1 = Reservation();
 
   Map data = {};
 
   @override
   initState() {
     getStoredData();
+  }
+
+  void saveDataInObject() {
+    reserve1.adults = adults;
+    reserve1.children = children;
+    reserve1.fullName = storedName;
+    reserve1.email = storedEmail;
+    reserve1.phone = storedPhone;
+    reserve1.noOfSingle = single;
+    reserve1.noOfDouble = double;
+    reserve1.noOfExecutive = executive;
+    var dateList = dateRange.split('-');
+    startDate = dateList[0].trim();
+    endDate = dateList[1].trim();
+    reserve1.startDate = startDate;
+    reserve1.endDate = endDate;
   }
 
   getStoredData() async {
@@ -155,17 +175,11 @@ class _PersonalDetailsScreenState extends State<PersonalDetailsScreen> {
                         // color: Colors.orangeAccent,
                         onPressed: () {
                           saveData();
+                          saveDataInObject();
+
                           Navigator.pushNamed(context, '/confirm_details',
                               arguments: {
-                                "fullName": fullNameController.text,
-                                "email": emailController.text,
-                                "phone": phoneController.text,
-                                "single": single,
-                                "double": double,
-                                "executive": executive,
-                                'dateRange': dateRange,
-                                'adults': adults,
-                                'children': children,
+                                'reservation': reserve1,
                               });
                         },
                       ),
@@ -173,6 +187,7 @@ class _PersonalDetailsScreenState extends State<PersonalDetailsScreen> {
                         // color: Colors.blueGrey,
                         onPressed: () {
                           saveData();
+                          saveDataInObject();
                           Navigator.pop(context);
                         },
                         child: Text('Go back to Room Selection!'),

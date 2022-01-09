@@ -6,6 +6,21 @@ import 'screens/personal_details.dart';
 import 'screens/payment_screen.dart';
 import 'screens/reservation_status.dart';
 
+class Reservation {
+  String fullName = '',
+      email = '',
+      phone = '',
+      noOfSingle = '',
+      noOfDouble = '',
+      noOfExecutive = '',
+      adults = '',
+      children = '',
+      startDate = '',
+      endDate = '';
+
+  // Reservation(this.fullName)
+}
+
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,

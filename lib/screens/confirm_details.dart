@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+// import 'package:resevation_mgt/screens/personal_details.dart';
 import 'package:resevation_mgt/widgets/appbar.dart';
 import 'package:resevation_mgt/widgets/drawer.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:developer';
+// import 'package:shared_preferences/shared_preferences.dart';
+import '../models/reservation.dart';
 
 class DetailsConfirmationScreen extends StatefulWidget {
   @override
@@ -22,6 +25,7 @@ class _DetailsConfirmationScreenState extends State<DetailsConfirmationScreen> {
       startDate = '',
       endDate = '';
   Map data = {};
+  var reserve1 = Reservation();
 
   @override
   void initState() {
@@ -29,18 +33,20 @@ class _DetailsConfirmationScreenState extends State<DetailsConfirmationScreen> {
   }
 
   getData() async {
-    fullName = data['fullName'] ?? "empty";
-    email = data['email'] ?? "empty";
-    phone = data['phone'] ?? "empty";
-    noOfSingle = data['single'] ?? "0";
-    noOfDouble = data['double'] ?? "0";
-    noOfExecutive = data['executive'] ?? "0";
-    dateRange = data['dateRange'] as String;
-    adults = data['adults'] as String;
-    children = data['children'] as String;
-    var dateList = dateRange.split('-');
-    startDate = dateList[0].trim();
-    endDate = dateList[1].trim();
+    // fullName = data['fullName'] ?? "empty";
+    // email = data['email'] ?? "empty";
+    // phone = data['phone'] ?? "empty";
+    // noOfSingle = data['single'] ?? "0";
+    // noOfDouble = data['double'] ?? "0";
+    // noOfExecutive = data['executive'] ?? "0";
+    // dateRange = data['dateRange'] as String;
+    // adults = data['adults'] as String;
+    // children = data['children'] as String;
+    // var dateList = dateRange.split('-');
+    // startDate = dateList[0].trim();
+    // endDate = dateList[1].trim();
+    reserve1 = data['reservation'];
+    inspect(reserve1);
 
     // single = data['single'];
     // SharedPreferences data = await SharedPreferences.getInstance();
@@ -96,7 +102,7 @@ class _DetailsConfirmationScreenState extends State<DetailsConfirmationScreen> {
                       SizedBox(
                         width: 30,
                       ),
-                      Text(fullName,
+                      Text(reserve1.fullName,
                           style: TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
@@ -111,7 +117,7 @@ class _DetailsConfirmationScreenState extends State<DetailsConfirmationScreen> {
                       SizedBox(
                         width: 32,
                       ),
-                      Text(email,
+                      Text(reserve1.email,
                           style: TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
@@ -124,7 +130,7 @@ class _DetailsConfirmationScreenState extends State<DetailsConfirmationScreen> {
                       SizedBox(
                         width: 25,
                       ),
-                      Text(phone,
+                      Text(reserve1.phone,
                           style: TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
@@ -151,7 +157,7 @@ class _DetailsConfirmationScreenState extends State<DetailsConfirmationScreen> {
                       SizedBox(
                         width: 22,
                       ),
-                      Text(startDate,
+                      Text(reserve1.startDate,
                           style: TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
@@ -167,7 +173,7 @@ class _DetailsConfirmationScreenState extends State<DetailsConfirmationScreen> {
                       SizedBox(
                         width: 20,
                       ),
-                      Text(endDate,
+                      Text(reserve1.endDate,
                           style: TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
@@ -192,7 +198,7 @@ class _DetailsConfirmationScreenState extends State<DetailsConfirmationScreen> {
                       SizedBox(
                         width: 2,
                       ),
-                      Text(adults,
+                      Text(reserve1.adults,
                           style: TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
@@ -205,7 +211,7 @@ class _DetailsConfirmationScreenState extends State<DetailsConfirmationScreen> {
                       SizedBox(
                         width: 5,
                       ),
-                      Text(children,
+                      Text(reserve1.children,
                           style: TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
@@ -257,7 +263,7 @@ class _DetailsConfirmationScreenState extends State<DetailsConfirmationScreen> {
                     SizedBox(
                       width: 80,
                     ),
-                    Text(noOfSingle)
+                    Text(reserve1.noOfSingle)
                   ]),
                   Row(children: [
                     Column(
@@ -278,7 +284,7 @@ class _DetailsConfirmationScreenState extends State<DetailsConfirmationScreen> {
                     SizedBox(
                       width: 80,
                     ),
-                    Text(noOfDouble)
+                    Text(reserve1.noOfDouble)
                   ]),
                   Row(children: [
                     Column(
@@ -299,7 +305,7 @@ class _DetailsConfirmationScreenState extends State<DetailsConfirmationScreen> {
                     SizedBox(
                       width: 78,
                     ),
-                    Text(noOfExecutive)
+                    Text(reserve1.noOfExecutive)
                   ]),
                   SizedBox(
                     height: 15,
