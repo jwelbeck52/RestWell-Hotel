@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:resevation_mgt/widgets/appbar.dart';
@@ -5,6 +7,9 @@ import 'package:resevation_mgt/widgets/drawer.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../providers/reservations.dart';
+import '../models/reservation.dart';
+import 'package:resevation_mgt/models/room.dart';
+import 'package:resevation_mgt/providers/rooms.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -44,6 +49,17 @@ class _HomeScreenState extends State<HomeScreen> {
 
   refresh() {
     getData();
+    var rooms = Rooms();
+    // var room = rooms.getRoomById('2');
+    var reserve1 = Reservation(
+        id: "1",
+        roomId: '2',
+        fullName: 'fullName',
+        email: 'email',
+        startDate: DateTime.now(),
+        endDate: DateTime.now());
+    reservations.addReservation(reserve1);
+    inspect(reservations.reservations);
   }
 
   showName() {

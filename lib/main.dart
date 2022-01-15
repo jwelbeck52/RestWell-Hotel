@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:resevation_mgt/screens/dashboard.dart';
+
+import './providers/reservations.dart';
+import './models/reservation.dart';
 import 'screens/home.dart';
+import 'screens/dashboard.dart';
 import 'screens/room_select.dart';
 import 'screens/confirm_details.dart';
 import 'screens/personal_details.dart';
@@ -18,13 +23,13 @@ void main() {
     initialRoute: '/',
     routes: {
       // When navigating to the "/" route, build the FirstScreen widget.
-      '/': (context) => HomeScreen(),
+      Dashboard.routeName: (context) => Dashboard(),
       // When navigating to the "/second" route, build the SecondScreen widget.
-      '/room_selection': (context) => RoomSelectionScreen(),
-      '/personal_details': (context) => PersonalDetailsScreen(),
-      '/confirm_details': (context) => DetailsConfirmationScreen(),
-      '/payment': (context) => PaymentScreen(),
-      '/status': (context) => StatusScreen(),
+      RoomSelectionScreen.routeName: (context) => RoomSelectionScreen(),
+      // '/personal_details': (context) => PersonalDetailsScreen(),
+      // '/confirm_details': (context) => DetailsConfirmationScreen(),
+      // '/payment': (context) => PaymentScreen(),
+      // '/status': (context) => StatusScreen(),
     },
   ));
 }

@@ -3,12 +3,8 @@ import 'package:resevation_mgt/widgets/appbar.dart';
 import 'package:resevation_mgt/widgets/drawer.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
-class RoomSelectionScreen extends StatefulWidget {
-  @override
-  State<RoomSelectionScreen> createState() => _RoomSelectionScreenState();
-}
-
-class _RoomSelectionScreenState extends State<RoomSelectionScreen> {
+class RoomSelectionScreen extends StatelessWidget {
+  static const String routeName = '/room_selection';
   final _formKey = GlobalKey<FormBuilderState>();
   final singleroomcontroller = TextEditingController()..text = '0';
   final doubleroomcontroller = TextEditingController()..text = '0';
@@ -237,13 +233,14 @@ class _RoomSelectionScreenState extends State<RoomSelectionScreen> {
     // } else
     //   Navigator.pushNamed(context, '/personal_details');
 
-    Navigator.pushNamed(context, '/personal_details', arguments: {
-      'noOfSingleRoom': singleroomcontroller.text,
-      'noOfDoubleRoom': doubleroomcontroller.text,
-      'noOfExecutiveRoom': executiveroomcontroller.text,
-      'dateRange': dateRange,
-      'adults': adults,
-      'children': children,
-    });
+    //   Navigator.pushNamed(context, '/personal_details', arguments: {
+    //     'noOfSingleRoom': singleroomcontroller.text,
+    //     'noOfDoubleRoom': doubleroomcontroller.text,
+    //     'noOfExecutiveRoom': executiveroomcontroller.text,
+    //     'dateRange': dateRange,
+    //     'adults': adults,
+    //     'children': children,
+    //   });
+    // }
   }
 }
