@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:resevation_mgt/widgets/appbar.dart';
 import 'package:resevation_mgt/widgets/drawer.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../providers/reservations.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -12,11 +14,21 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   String fullName = '';
   DateTime selectedStartDate = DateTime.now();
-  DateTime selectedendDate = DateTime.now().add(const Duration(days: 2));
+  DateTime selectedendDate = DateTime.now().add(const Duration(days: 30));
+  var reservations = Reservations();
+
   final _formKey = GlobalKey<FormBuilderState>();
   final childerncontrollter = TextEditingController()..text = '0';
   final adultcontroller = TextEditingController()..text = '0';
-  final datecontroller = TextEditingController();
+  final datecontroller = TextEditingController()
+    // ..text = DateTimeRange(
+    //         start: DateTime.now(),
+    //         end: DateTime.now().add(const Duration(days: 2)))
+    //     .toString();
+    ..text = DateFormat('dd/MM/yyyy').format(DateTime.now()) +
+        ' - ' +
+        DateFormat('dd/MM/yyyy')
+            .format(DateTime.now().add(const Duration(days: 2)));
 
   @override
   void initState() {

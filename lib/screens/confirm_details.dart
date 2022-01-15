@@ -1,8 +1,10 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 // import 'package:resevation_mgt/screens/personal_details.dart';
 import 'package:resevation_mgt/widgets/appbar.dart';
 import 'package:resevation_mgt/widgets/drawer.dart';
-import 'dart:developer';
+
 // import 'package:shared_preferences/shared_preferences.dart';
 import '../models/reservation.dart';
 
