@@ -8,9 +8,9 @@ class Reservation {
   String id;
   String fullName;
   String email;
-  double cost = 0;
-  int noOfAdults = 0;
-  int noOfChildren = 0;
+  double cost = 100.00;
+  //int noOfAdults = 0;
+  //int noOfChildren = 0;
   DateTime startDate;
   DateTime endDate;
   String roomId;
