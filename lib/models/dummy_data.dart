@@ -13,7 +13,7 @@ List<Reservation> dummyReservations = [
       endDate: DateTime.now().add(const Duration(days: 2))),
   Reservation(
       id: '2',
-      roomId: '1',
+      roomId: '3',
       fullName: 'Captain Kidd',
       email: 'capK@mail.com',
       startDate: DateTime.now(),

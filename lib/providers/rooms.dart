@@ -36,8 +36,8 @@ class Rooms with ChangeNotifier {
   }
 
   Room getRoomById(String roomId) {
-    var room = rooms.firstWhere((id) => id == roomId);
-    return room;
+    var myRoom = _rooms.firstWhere((room) => room.id == roomId);
+    return myRoom;
   }
 
   addRoom(Room newRoom) {

@@ -4,6 +4,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:resevation_mgt/screens/room_select.dart';
 
 import '../providers/rooms.dart';
 import '../providers/reservations.dart';
@@ -11,16 +12,11 @@ import '../providers/reservations.dart';
 import 'package:resevation_mgt/widgets/appbar.dart';
 import 'package:resevation_mgt/widgets/drawer.dart';
 import '../models/reservation.dart';
+import 'reservations_screen.dart';
 
-class Dashboard extends StatefulWidget {
+class Dashboard extends StatelessWidget {
   static const String routeName = '/';
-  Dashboard({Key? key}) : super(key: key);
 
-  @override
-  State<Dashboard> createState() => _DashboardState();
-}
-
-class _DashboardState extends State<Dashboard> {
   var reserve1 = Reservation(
       id: "419",
       roomId: '1',
@@ -33,6 +29,7 @@ class _DashboardState extends State<Dashboard> {
   Widget build(BuildContext context) {
     var myReservations = Provider.of<Reservations>(context);
     var myRooms = Provider.of<Rooms>(context); //Rooms();
+
     return Scaffold(
       appBar: MainAppBar(
         "RestWell Hotel",
@@ -43,26 +40,26 @@ class _DashboardState extends State<Dashboard> {
           child: Column(
             children: [
               ElevatedButton(
-                child: Text('Show Reservations'),
+                child: Text('Load Data'),
                 onPressed: () {
+                  myRooms.loadRoomsFromDB();
                   myReservations.loadReservationsFromDB();
-                  inspect(myReservations.reservations);
                 },
               ),
               ElevatedButton(
                 child: Text('Show Rooms'),
                 onPressed: () {
-                  myRooms.loadRoomsFromDB();
                   inspect(myRooms.rooms);
+                  Navigator.pushNamed(context, RoomSelectionScreen.routeName);
                 },
               ),
-              //  ElevatedButton(
-              //   child: Text('Add Room'),
-              //   onPressed: () {
-              //     myreservations.loadReservationsFromDB();
-              //     inspect(myreservations.reservations);
-              //   },
-              // ),
+              ElevatedButton(
+                child: Text('Show Reservations'),
+                onPressed: () {
+                  inspect(myReservations.reservations);
+                  Navigator.pushNamed(context, ReservationsScreen.routeName);
+                },
+              ),
               ElevatedButton(
                 child: Text('Add Reservation'),
                 onPressed: () {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:provider/provider.dart';
+import 'package:resevation_mgt/screens/reservations_screen.dart';
 
 // providers
 import './providers/reservations.dart';
@@ -43,6 +44,7 @@ class HotelApp extends StatelessWidget {
           Dashboard.routeName: (context) => Dashboard(),
           // When navigating to the "/second" route, build the SecondScreen widget.
           RoomSelectionScreen.routeName: (context) => RoomSelectionScreen(),
+          ReservationsScreen.routeName: (context) => ReservationsScreen(),
           // '/personal_details': (context) => PersonalDetailsScreen(),
           // '/confirm_details': (context) => DetailsConfirmationScreen(),
           // '/payment': (context) => PaymentScreen(),
